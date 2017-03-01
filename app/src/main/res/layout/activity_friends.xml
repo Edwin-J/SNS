@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_friends"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.example.minjae.vacation.Layout.FriendsActivity">
+
+    <TextView
+        android:id="@+id/text_friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#36b37d"
+        android:padding="10dp"
+        android:text="친구"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:id="@+id/me"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/profile_background"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/psa"
+            android:src="@drawable/me"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="15dp"
+            />
+
+        <TextView
+            android:id="@+id/name"
+            android:text="MJ"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/appId"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="친구"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_marginBottom="10dp"
+            />
+
+        <ListView
+            android:id="@+id/list_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingTop="16dp"
+        >
+        <ImageButton
+            android:id="@+id/bar_friends"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/friends"
+            android:scaleType="centerInside"
+            />
+
+        <ImageButton
+            android:id="@+id/bar_chats"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/chats"
+            android:scaleType="centerInside"
+            />
+
+        <ImageButton
+            android:id="@+id/bar_setting"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/setting"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"
+            />
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,160 @@
+package com.example.minjae.vacation.Listview;
+
+import android.app.Notification;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.minjae.vacation.R;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Minjae on 2017-02-24.
+ */
+
+public class ChatAdapter extends BaseAdapter{
+
+    public class ListContents{
+        String msg;
+        int type;
+        ListContents(String _msg,int _type)
+        {
+            this.msg = _msg;
+            this.type = _type;
+        }
+    }
+
+    private List<ListContents> m_List;
+
+    public ChatAdapter() {
+        m_List = new ArrayList();
+    }
+
+    public void add(String _msg,int _type) {
+        ChattingItem chattingItem = new ChattingItem();
+
+        chattingItem.setMsg(_msg);
+        chattingItem.setNum(_type);
+
+        m_List.add(new ListContents(_msg,_type));
+
+    }
+
+    public void remove(int _position) {
+        m_List.remove(_position);
+    }
+
+    @Override
+    public int getCount() {
+        return m_List.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return m_List.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final int pos = position;
+        final Context context = parent.getContext();
+
+        TextView text;
+        CustomHolder holder;
+        LinearLayout layout;
+        View viewRight;
+        View viewLeft;
+
+        // 리스트가 길어지면서 현재 화면에 보이지 않는 아이템은 converView가 null인 상태로 들어 옴
+        if ( convertView == null ) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.listview_message, parent, false);
+
+            layout = (LinearLayout) convertView.findViewById(R.id.layout);
+            text = (TextView) convertView.findViewById(R.id.text);
+            viewRight = (View) convertView.findViewById(R.id.imageViewright);
+            viewLeft = (View) convertView.findViewById(R.id.imageViewleft);
+
+            holder = new CustomHolder();
+            holder.m_TextView = text;
+            holder.layout = layout;
+            holder.viewRight = viewRight;
+            holder.viewLeft = viewLeft;
+            convertView.setTag(holder);
+        }
+
+        else {
+            holder = (CustomHolder) convertView.getTag();
+            text = holder.m_TextView;
+            layout = holder.layout;
+            viewRight = holder.viewRight;
+            viewLeft = holder.viewLeft;
+        }
+
+        text.setText(m_List.get(position).msg);
+
+        if( m_List.get(position).type == 0 ) {
+            text.setBackgroundResource(R.drawable.talk_1);
+            text.setTextSize(20);
+            layout.setGravity(Gravity.LEFT);
+            viewRight.setVisibility(View.GONE);
+            viewLeft.setVisibility(View.GONE);
+        }else if(m_List.get(position).type == 1){
+            text.setBackgroundResource(R.drawable.talk);
+            text.setTextSize(20);
+            layout.setGravity(Gravity.RIGHT);
+            viewRight.setVisibility(View.GONE);
+            viewLeft.setVisibility(View.GONE);
+        }else if(m_List.get(position).type == 2){
+            //text.setBackgroundResource(R.drawable.datebg);
+            text.setTextSize(15);
+            layout.setGravity(Gravity.CENTER);
+            viewRight.setVisibility(View.VISIBLE);
+            viewLeft.setVisibility(View.VISIBLE);
+        }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "리스트 클릭 : "+m_List.get(pos), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                // 터치 시 해당 아이템 이름 출력
+                Toast.makeText(context, "리스트 롱 클릭 : "+m_List.get(pos), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+        return convertView;
+    }
+
+    private class CustomHolder {
+        TextView m_TextView;
+        LinearLayout layout;
+        View viewRight;
+        View viewLeft;
+    }
+}

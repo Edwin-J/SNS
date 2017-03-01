@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_chats"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.example.minjae.vacation.Layout.ChatsActivity">
+
+    <TextView
+        android:id="@+id/text_friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#36b37d"
+        android:padding="10dp"
+        android:text="채팅"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+
+    <ListView
+        android:id="@+id/list_chats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingTop="16dp"
+        >
+        <ImageButton
+            android:id="@+id/bar_friends"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/friends"
+            android:scaleType="centerInside"
+            android:background="#00000000"
+            />
+
+        <ImageButton
+            android:id="@+id/bar_chats"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/chats"
+            android:scaleType="centerInside"
+            />
+
+        <ImageButton
+            android:id="@+id/bar_setting"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/setting"
+            android:scaleType="centerInside"
+            />
+    </LinearLayout>
+</LinearLayout>
